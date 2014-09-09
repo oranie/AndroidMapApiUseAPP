@@ -14,11 +14,20 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         class="com.google.android.gms.maps.SupportMapFragment"
-        map:cameraTargetLat="34.68649042051079"
-        map:cameraTargetLng="135.51943183877566"
+        map:cameraTargetLat="35.656452"
+        map:cameraTargetLng="139.694853"
         map:cameraTilt="0"
         map:cameraZoom="18"
         />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="音声入力実行"
+        android:textSize="30dp"
+        android:id="@+id/button1"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
 
 
 </RelativeLayout>
