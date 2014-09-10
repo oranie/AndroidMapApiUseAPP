@@ -10,14 +10,20 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Map;
 
 public class Direction {
     JSONObject mJsonBody;
     RequestQueue mRequestQueue;
     Context mContext;
+    ArrayList<Map<String,Double>> mStartList ;
+    ArrayList<Map<String,Double>> mEndList ;
+
 
     public Direction(Context context){
         mContext = context;
@@ -32,8 +38,10 @@ public class Direction {
             Log.d("RESPONSE",mJsonBody.toString());
             DirectionJsonParser directionJsonParser = new DirectionJsonParser(mJsonBody);
             try {
-                String parseResult = directionJsonParser.jsonParser();
+                directionJsonParser.jsonParser();
             } catch (IOException e) {
+                //e.printStackTrace();
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
         }

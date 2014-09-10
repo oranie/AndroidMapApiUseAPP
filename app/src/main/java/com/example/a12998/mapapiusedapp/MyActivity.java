@@ -105,6 +105,7 @@ public class MyActivity extends ActionBarActivity implements View.OnClickListene
 
         mMap.addPolyline(rectLine);
 
+
         /*
         try {
             // "android.speech.action.RECOGNIZE_SPEECH" を引数にインテント作成
