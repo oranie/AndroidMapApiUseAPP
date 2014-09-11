@@ -2,6 +2,7 @@ package com.example.a12998.mapapiusedapp;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.widget.Toast;
@@ -112,11 +113,24 @@ public class Direction extends ActionBarActivity{
 
     public void getDocument(Double latitude,Double longitude) {
         try {
-
+            /*
             String url = "https://maps.googleapis.com/maps/api/directions/json?"
                     + "origin=" + String.valueOf(latitude) + "," + String.valueOf(longitude)
                     + "&destination=" + mToEnd
                     + "&sensor=false&units=metric&regin=jp&mode=train";
+            Log.d("getDocument","url : " + url);
+            */
+            Uri.Builder builder = new Uri.Builder();
+            builder.scheme("http")
+                    .authority("maps.googleapis.com")
+                    .path("/maps/api/directions/json")
+                    .appendQueryParameter("origin",
+                            String.valueOf(latitude) + "," + String.valueOf(longitude))
+                    .appendQueryParameter("destination",
+                            String.valueOf(mToEnd))
+                    .appendQueryParameter("sensor", "false")
+                    .appendQueryParameter("walking", "walking");
+            String url = builder.toString();
             Log.d("getDocument","url : " + url);
             mRequestQueue = Volley.newRequestQueue(mContext);
             JsonObjectRequest volley = new JsonObjectRequest(Request.Method.GET,url, mJsonBody,listener,errorListener);

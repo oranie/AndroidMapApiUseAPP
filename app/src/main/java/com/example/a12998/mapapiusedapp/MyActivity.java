@@ -56,9 +56,11 @@ public class MyActivity extends ActionBarActivity implements View.OnClickListene
         listener = new LocationListener() {
             @Override
             public void onStatusChanged(String provider, int status, Bundle extras) {
+                Log.d("TEST","onStatusChanged");
             }
             @Override
             public void onProviderEnabled(String provider) {
+                Log.d("TEST","onProviderEnabled");
             }
             @Override
             public void onProviderDisabled(String provider) {
@@ -116,13 +118,13 @@ public class MyActivity extends ActionBarActivity implements View.OnClickListene
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
             String resultsString = "";
-            //mMap.clear();
+            mMap.clear();
 
             ArrayList<String> results = data.getStringArrayListExtra(
                     RecognizerIntent.EXTRA_RESULTS);
 
-            for (int i = 0; i < results.size(); i++) {
-            //for (int i = 0; i < 1; i++) {
+            //for (int i = 0; i < results.size(); i++) {
+            for (int i = 0; i < 1; i++) {
                 resultsString += results.get(i);
             }
             Direction direction = new Direction(this,mMap,resultsString);
